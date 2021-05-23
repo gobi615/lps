@@ -25,6 +25,7 @@ class ProblemsComponent extends Component {
                             <th>Title</th>
                             <th>Difficulty</th>
                             <th>Frequency</th>
+                            <th>Mark Solved</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,14 +35,28 @@ class ProblemsComponent extends Component {
                                 <td>{problem.id}</td>
                                 <td><a target="_blank" href={problem.url}>{this.isPremium(problem.isPremium)} {problem.title}</a></td>
                                 <td>{problem.difficulty}</td>
-                                <td></td>
                                 <td>{this.calculateFreq(problem.frequency).toFixed(2)+'%'}</td>
+                                <td><button onClick={() => this.markSolved(problem)}>MarkSolved</button></td>
                             </tr>)
                 })}
                     </tbody>
                 </table>                
             </div>
          );
+    }
+
+    markSolved = async (p)=>{
+        p.isSolved = !p.isSolved;
+        let probs = [...this.state.problems];
+
+        probs = probs.map(prb=>{
+            if(prb.id === p.id){
+                prb.isSolved = p.isSolved;
+            }
+            return prb;
+        }) ;
+        this.setState({problems : probs})
+        await http.put(process.env.REACT_APP_BACKEND_URL+'leet/'+p.id, p);
     }
 
     calculateFreq = (freq)=>{
