@@ -8,6 +8,7 @@ import HomeComponent from './home'
 function App() {
   return (
     <Switch>
+      <Route path="/all/:comp" exact component={ProblemsComponent} />
       <Route path="/all" exact component={ProblemsComponent} />
       <Route path="/prem" exact component={PremiumComponent} />
       <Route path="/" exact component={HomeComponent} />

@@ -14,7 +14,36 @@ class HomeComponent extends Component {
                     <li className="list-group-item">
                         <Link to="/prem">Premium Problems</Link>
                     </li>
-                    
+                    <li className="list-group-item">
+                        <Link to='/all/amazon'>Amazon</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/google'>Google</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/microsoft'>MicroSoft</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/goldmansacs'>Goldman Sachs</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/facebook'>Facebook</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/apple'>Apple</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/cisco'>Cisco</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/samsung'>Samsung</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/jpmorgan'>JP Morgan</Link>
+                    </li>
+                    <li className="list-group-item">
+                        <Link to='/all/morganstanely'>Morgan Stanely</Link>
+                    </li>
                 </ul>
             </div>
             </div>

@@ -7,10 +7,14 @@ class ProblemsComponent extends Component {
      }
      async componentDidMount() {
         const {data} = await http.get(process.env.REACT_APP_BACKEND_URL+'all');
-        this.setState({problems : data}) ;
-        
+        this.setState({problems : data}) ;        
      }
     render() {
+        let tagProbs = this.state.problems;
+        let comp = this.props.match.params.comp
+        if(comp){
+           tagProbs = tagProbs.filter((p)=> p.tag.includes(comp))
+        }
         return (            
             <div className="container">
                 <table className="table">
@@ -24,7 +28,7 @@ class ProblemsComponent extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                    {this.state.problems.map((problem)=>{
+                    {tagProbs.map((problem)=>{
                     return (<tr key={problem.id}>
                                 <td>{problem.isSolved ? <i style={{color:"green"}} className="fa fa-check" /> : ""}</td>
                                 <td>{problem.id}</td>
@@ -35,9 +39,7 @@ class ProblemsComponent extends Component {
                             </tr>)
                 })}
                     </tbody>
-                </table>
-
-                
+                </table>                
             </div>
          );
     }
